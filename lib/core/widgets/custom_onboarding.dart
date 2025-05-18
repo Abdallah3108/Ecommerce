@@ -1,6 +1,7 @@
 import 'package:ecommerceapp/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:svg_flutter/svg_flutter.dart';
+import 'package:flutter_svg/flutter_svg.dart'; 
+
 import 'package:ecommerceapp/features/onboarding/views/get_started_view.dart';
 
 class OnboardingPage extends StatelessWidget {

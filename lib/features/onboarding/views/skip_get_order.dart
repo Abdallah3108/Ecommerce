@@ -21,7 +21,7 @@ class GetOrderView extends StatelessWidget {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => const GetStartedView(),
+              builder: (context) =>  GetStartedView(),
             ),
           );
         },
