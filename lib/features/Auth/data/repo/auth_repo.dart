@@ -1,8 +1,10 @@
 import 'package:dartz/dartz.dart';
-import 'package:dio/dio.dart';
 import 'package:ecommerceapp/core/network/api_helper.dart';
 import 'package:ecommerceapp/core/network/api_response.dart';
 import 'package:ecommerceapp/features/Auth/data/models/user_model.dart';
+
+import '../../../../core/local/local_data.dart';
+
 
 class AuthRepo {
   // Singleton
@@ -11,50 +13,68 @@ class AuthRepo {
   factory AuthRepo() => _instance;
 
   AuthRepo._internal();
-  ApiHelper apiHelper=ApiHelper();
+  ApiHelper apiHelper = ApiHelper();
 
-  // UserModel? user;
-
-  Future<Either<String, String>> register({required String name, required String phone, required String email, required String password }) async {
+  Future<Either<String, String>> register({
+    required String name,
+    required String phone,
+    required String email,
+    required String password,
+  }) async {
     try {
-      ApiResponse aPiResponse = await apiHelper.postRequest(
-          endPoint: 'register',
-          data: {
-            'name': name,
-            'phone': phone,
-            'email': email,
-            'password': password,
-          },
-          isAuthorized: false
+      ApiResponse apiResponse = await apiHelper.postRequest(
+        endPoint: 'register',
+        data: {
+          'name': name,
+          'phone': phone,
+          'email': email,
+          'password': password,
+        },
+        isAuthorized: false,
       );
-      if (aPiResponse.status) {
-        return right(aPiResponse.message);
-      }
-      else {
-        return left(aPiResponse.message);
+      if (apiResponse.status) {
+        return right(apiResponse.message);
+      } else {
+        return left(apiResponse.message);
       }
     } catch (e) {
-      return left(ApiResponse
-          .fromError(e)
-          .message);
+      return left(ApiResponse.fromError(e).message);
     }
   }
 
-  Either<String, UserModel> login({
+  Future<Either<String, UserModel>> login({
     required String email,
     required String password,
-  }) {
+  }) async {
     try {
+      ApiResponse apiResponse = await apiHelper.postRequest(
+        endPoint: 'login',
+        data: {
+          'email': email,
+          'password': password,
+        },
+        isAuthorized: false,
+      );
 
-          return Right(UserModel(email: 'email', password: 'password', name: 'name', phone: 'phone'));
-      //   } else {
-      //     throw Exception('Invalid email or password');
-      //   }
-      // } else {
-      //   throw Exception('You must register first');
-      // }
+      if (apiResponse.status) {
+        var data = apiResponse.data['user'];
+        var accessToken = apiResponse.data['access_token'];
+
+
+        await LocalData.setAccessToken(accessToken);
+
+        final user = UserModel(
+          email: data['email'],
+          password: password,
+          name: data['name'],
+          phone: data['phone'],
+        );
+        return right(user);
+      } else {
+        return left(apiResponse.message);
+      }
     } catch (e) {
-      return left(e.toString());
+      return left(ApiResponse.fromError(e).message);
     }
   }
 }

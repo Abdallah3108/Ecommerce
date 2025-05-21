@@ -13,8 +13,8 @@ class GetOrderView extends StatelessWidget {
         imagePath: AppAssets.getOrder,
         title: 'Get Your Order',
         description:
-            'Amet minim mollit non deserunt ullamco est\n sit aliqua dolor do amet sint. Velit officia\n consequat duis enim velit mollit.',
-        
+        'Amet minim mollit non deserunt ullamco est\n sit aliqua dolor do amet sint. Velit officia\n consequat duis enim velit mollit.',
+
         buttonRightText: 'Get Started',
         buttonLeftText: 'Previous',
         RightOnPressed: (){

@@ -4,9 +4,12 @@ import 'package:ecommerceapp/core/widgets/custom_started_button.dart';
 import 'package:ecommerceapp/core/widgets/custom_text_form.dart';
 import 'package:ecommerceapp/features/Auth/manager/auth_cubit/auth_cubit.dart';
 import 'package:ecommerceapp/features/Auth/manager/auth_cubit/auth_state.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+import '../../home/views/home.dart';
 
 class LoginView extends StatelessWidget {
   LoginView({super.key});
@@ -24,6 +27,11 @@ class LoginView extends StatelessWidget {
               SnackBar(content: Text('Login Successful')),
             );
 
+
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (_) => HomeView()),
+            );
           } else if (state is AuthLoginErrorState) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(content: Text(state.error)),

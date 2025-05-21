@@ -4,12 +4,10 @@ import 'package:ecommerceapp/core/network/api_response.dart';
 import '../local/local_data.dart';
 
 class ApiHelper {
-  // Singleton
   static final ApiHelper _apiHelper = ApiHelper._internal();
   factory ApiHelper() => _apiHelper;
   ApiHelper._internal();
 
-  // Dio instance
   Dio dio = Dio(
     BaseOptions(
       baseUrl: 'https://ecommerce-shop-api-production.up.railway.app/api/',
@@ -19,7 +17,6 @@ class ApiHelper {
     ),
   );
 
-  // GET request
   Future<ApiResponse> getRequest({
     required String endPoint,
     Map<String, dynamic>? data,
@@ -43,7 +40,6 @@ class ApiHelper {
     }
   }
 
-  // POST request
   Future<ApiResponse> postRequest({
     required String endPoint,
     Map<String, dynamic>? data,
@@ -67,7 +63,6 @@ class ApiHelper {
     }
   }
 
-  // PUT request
   Future<ApiResponse> putRequest({
     required String endPoint,
     Map<String, dynamic>? data,
@@ -91,7 +86,6 @@ class ApiHelper {
     }
   }
 
-  // DELETE request
   Future<ApiResponse> deleteRequest({
     required String endPoint,
     Map<String, dynamic>? data,
