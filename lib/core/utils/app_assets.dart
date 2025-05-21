@@ -7,4 +7,6 @@ abstract class AppAssets {
   static const String getStarted = '${assetsPath}getstarted.png';
   static const String getStartedSvg = '${assetsPath}getstarted.svg';
   static const String arrowBack = '${assetsPath}arrowback.svg';
+  static const String star = '${assetsPath}star.svg';
+  static const String tShirt = '${assetsPath}t-shirt.png';
 }

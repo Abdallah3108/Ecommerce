@@ -9,4 +9,6 @@ abstract class AppColors
   static const Color white = Color(0xFFFFFFFF);
   static const Color backgroundTextForm = Color(0xFFF3F3F3);
   static const Color borderRadius = Color(0xFFA8A8A9);
+  static const Color textFormSearch = Color(0xFFBBBBBB);
+  static const Color star = Color(0xFFEDB310);
 }
