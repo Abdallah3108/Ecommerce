@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/helper/my_navigator.dart';
 import '../../../home/views/home.dart';
 import '../../data/models/user_model.dart';
-import '../../data/repo/AuthRepo.dart';
+import '../../data/repo/auth_repo.dart';
 import '../../views/login.dart';
 import 'auth_state.dart';
 
@@ -33,12 +33,12 @@ class AuthCubit extends Cubit<AuthState> {
 
     emit(AuthRegisterLoadingState());
     var response = await authRepo.register(
-      user: UserModel(
+
         name: nameController.text,
         phone: phoneController.text,
         email: emailController.text,
         password: passwordController.text,
-      ),
+
     );
 
     response.fold(
@@ -46,7 +46,7 @@ class AuthCubit extends Cubit<AuthState> {
         emit(AuthRegisterErrorState(error: error));
       },
           (r) {
-        emit(AuthRegisterSuccessState());
+        emit(AuthRegisterSuccessState(msg: r));
         MyNavigator.navigateTo(screen: LoginView());
       },
     );

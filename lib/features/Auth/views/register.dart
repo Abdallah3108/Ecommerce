@@ -137,7 +137,7 @@ class RegisterView extends StatelessWidget {
 
                       if (state is AuthRegisterSuccessState) {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text('Create Account Successful')),
+                          SnackBar(content: Text(state.msg)),
                         );
                       } else if (state is AuthRegisterErrorState) {
                         ScaffoldMessenger.of(context).showSnackBar(
