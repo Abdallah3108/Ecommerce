@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-
 import '../../../core/utils/app_assets.dart';
 import '../data/models/category_model.dart';
 
-class CategoriesList extends StatelessWidget {
+class CategoriesList extends StatefulWidget {
   final List<Category> categories;
 
   const CategoriesList({super.key, required this.categories});
+
+  @override
+  State<CategoriesList> createState() => _CategoriesListState();
+}
+
+class _CategoriesListState extends State<CategoriesList> {
+  int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -15,32 +20,44 @@ class CategoriesList extends StatelessWidget {
       height: 100,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: categories.length,
+        itemCount: widget.categories.length,
         itemBuilder: (context, index) {
-          final category = categories[index];
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: Column(
-              children: [
-                Container(
-                  width: 60,
-                  height: 60,
-                  padding: const EdgeInsets.all(12),
-                  decoration: BoxDecoration(
-                    color: Colors.grey[200],
-                    borderRadius: BorderRadius.circular(12),
+          final category = widget.categories[index];
+          final isSelected = selectedIndex == index;
+
+          return InkWell(
+            onTap: () {
+              setState(() {
+                selectedIndex = index;
+              });
+            },
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Column(
+                children: [
+                  Container(
+                    width: 60,
+                    height: 60,
+                    decoration: BoxDecoration(
+                      color: Colors.grey[200],
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    child: Image.asset(
+                      category.iconPath ?? AppAssets.logo,
+                      fit: BoxFit.fill,
+                    ),
                   ),
-                  child: SvgPicture.asset(category.iconPath?? AppAssets.logo),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  category.name,
-                  style: const TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w500,
+                  const SizedBox(height: 4),
+                  Text(
+                    category.name,
+                    style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w500,
+                      color: isSelected ? Colors.red : Colors.black,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           );
         },

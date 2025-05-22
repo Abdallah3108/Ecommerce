@@ -6,12 +6,12 @@ import '../data/models/products_model.dart';
 
 class ProductCard extends StatelessWidget {
   final Product product;
-  final String imageUrl;
+  final String image;
 
   const ProductCard({
     super.key,
     required this.product,
-    required this.imageUrl
+    required this.image
   });
 
   @override
@@ -25,22 +25,22 @@ class ProductCard extends StatelessWidget {
           children: [
             // Container for image with fixed dimensions
             Container(
-              height: 150,
+              height: 185,
               width: double.infinity,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
                 color: Colors.grey[200], // Fallback color if image fails
               ),
-              child: product.imageUrl.endsWith('.svg')
+              child: product.image.endsWith('.svg')
                   ? SvgPicture.asset(
-                product.imageUrl,
+                product.image,
                 fit: BoxFit.contain,
                 placeholderBuilder: (context) => const Center(
                   child: CircularProgressIndicator(),
                 ),
               )
                   : Image.asset(
-                product.imageUrl,
+                product.image,
                 fit: BoxFit.contain,
                 errorBuilder: (context, error, stackTrace) => const Icon(Icons.error),
               ),
