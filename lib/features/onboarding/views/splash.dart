@@ -1,3 +1,4 @@
+import 'package:ecommerceapp/core/constants/consts.dart';
 import 'package:ecommerceapp/core/utils/app_assets.dart';
 import 'package:ecommerceapp/core/utils/app_colors.dart';
 import 'package:ecommerceapp/features/onboarding/views/skip_choose_product.dart';
@@ -57,7 +58,7 @@ class _SplashViewState extends State<SplashView> {
               SvgPicture.asset(AppAssets.logo),
               const SizedBox(width: 10),
               Text(
-                'Stylish',
+                AppConstants.appName,
                 style: TextStyle(
                   fontSize: 40,
                   fontWeight: FontWeight.w700,

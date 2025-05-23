@@ -1,3 +1,4 @@
+import 'package:ecommerceapp/core/constants/consts.dart';
 import 'package:ecommerceapp/core/utils/app_assets.dart';
 import 'package:ecommerceapp/core/widgets/custom_onboarding.dart';
 import 'package:ecommerceapp/features/onboarding/views/skip_get_order.dart';
@@ -13,7 +14,7 @@ class SkipMakePayments extends StatelessWidget {
         imagePath: AppAssets.makePayments,
         title: 'Make Payment',
         description:
-            'Amet minim mollit non deserunt ullamco est\n sit aliqua dolor do amet sint. Velit officia\n consequat duis enim velit mollit.',
+            AppConstants.appTagLine,
         buttonRightText: 'Next',
         RightOnPressed: () {
           Navigator.push(

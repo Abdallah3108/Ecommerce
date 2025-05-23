@@ -14,5 +14,11 @@ abstract class AppAssets {
   static const String women = '${assetsPath}womens.png';
   static const String men = '${assetsPath}mens.png';
   static const String fashion = '${assetsPath}fashion.png';
-
+  static const String tShirt2 = '${assetsPath}t-shirt2.png';
+  static const String tShirt3 = '${assetsPath}t-shirt3.jpg';
+  static const String tShirt4 = '${assetsPath}t-shirt4.jpg';
+  static const String tShirt5 = '${assetsPath}t-shirt5.jpg';
+  static const String tShirt6 = '${assetsPath}t-shirt6.jpg';
+  static const String tShirt7 = '${assetsPath}t-shirt7.jpg';
+  static const String tShirt8 = '${assetsPath}t-shirt8.jpg';
 }

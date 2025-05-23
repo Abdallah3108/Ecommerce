@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/helper/my_navigator.dart';
-import '../../../home/views/home.dart';
+import '../../../home/views/trending.dart';
 import '../../data/models/user_model.dart';
 import '../../data/repo/auth_repo.dart';
 import '../../views/login.dart';

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ecommerceapp/features/onboarding/views/splash.dart';
+import 'package:get/route_manager.dart';
 import 'core/local/local_data.dart';
 import 'core/network/api_helper.dart';
 import 'features/home/data/repo/product_repo.dart';
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return  GetMaterialApp(
       debugShowCheckedModeBanner: false,
       home: SplashView(),
     );

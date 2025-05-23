@@ -1,3 +1,4 @@
+import 'package:ecommerceapp/core/constants/consts.dart';
 import 'package:ecommerceapp/core/utils/app_assets.dart';
 import 'package:ecommerceapp/core/widgets/custom_onboarding.dart';
 import 'package:ecommerceapp/features/onboarding/views/skip_make_payments.dart';
@@ -13,7 +14,7 @@ class SkipChooseProduct extends StatelessWidget {
         imagePath: AppAssets.chooseProducts,
         title: 'Choose Products',
         description:
-            'Amet minim mollit non deserunt ullamco est\n sit aliqua dolor do amet sint. Velit officia\n consequat duis enim velit mollit.',
+            AppConstants.appTagLine,
         buttonRightText: 'Next',
         RightOnPressed: () {
           Navigator.of(context).push(

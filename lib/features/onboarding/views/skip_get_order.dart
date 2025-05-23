@@ -1,3 +1,4 @@
+import 'package:ecommerceapp/core/constants/consts.dart';
 import 'package:ecommerceapp/core/utils/app_assets.dart';
 import 'package:ecommerceapp/core/widgets/custom_onboarding.dart';
 import 'package:ecommerceapp/features/onboarding/views/get_started_view.dart';
@@ -13,7 +14,7 @@ class GetOrderView extends StatelessWidget {
         imagePath: AppAssets.getOrder,
         title: 'Get Your Order',
         description:
-        'Amet minim mollit non deserunt ullamco est\n sit aliqua dolor do amet sint. Velit officia\n consequat duis enim velit mollit.',
+        AppConstants.appTagLine,
 
         buttonRightText: 'Get Started',
         buttonLeftText: 'Previous',
