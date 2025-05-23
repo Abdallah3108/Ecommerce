@@ -6,10 +6,12 @@ class LocalData {
 
   static String? get accessToken => _accessToken;
 
+  // Set Access Token + Save Login State
   static Future<void> setAccessToken(String token) async {
     _accessToken = token;
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString('access_token', token);
+    await prefs.setBool('is_logged_in', true); // حفظ حالة الدخول
   }
 
   static Future<void> loadAccessToken() async {
@@ -23,7 +25,7 @@ class LocalData {
     _accessToken = null;
   }
 
-  // الـ refresh token
+  // Set Refresh Token
   static Future<void> saveRefreshToken(String token) async {
     _refreshToken = token;
     final prefs = await SharedPreferences.getInstance();
@@ -47,4 +49,12 @@ class LocalData {
     await prefs.remove('refresh_token');
     _refreshToken = null;
   }
+
+  // Check if user is logged in
+  static Future<bool> isLoggedIn() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getBool('is_logged_in') ?? false;
+  }
+
+ 
 }

@@ -1,17 +1,14 @@
 import 'package:ecommerceapp/core/constants/consts.dart';
+import 'package:ecommerceapp/core/local/local_data.dart';
 import 'package:ecommerceapp/core/utils/app_assets.dart';
 import 'package:ecommerceapp/core/utils/app_colors.dart';
+import 'package:ecommerceapp/features/home/views/trending.dart';
 import 'package:ecommerceapp/features/onboarding/views/skip_choose_product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'get_started_view.dart';
-
-
-
-
-
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -25,24 +22,29 @@ class _SplashViewState extends State<SplashView> {
   void initState() {
     super.initState();
     navigateBasedOnPrefs();
-
-
   }
+
   Future<void> navigateBasedOnPrefs() async {
     await Future.delayed(const Duration(seconds: 2));
 
     final prefs = await SharedPreferences.getInstance();
-    final onboardingDone = prefs.getBool('onboarding_done') ?? true;
+    final onboardingDone = prefs.getBool('onboarding_done') ?? false;
+    final isLoggedIn = await LocalData.isLoggedIn(); 
 
-    if (onboardingDone) {
+    if (!onboardingDone) {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const GetStartedView()),
+        MaterialPageRoute(builder: (context) => const SkipChooseProduct()),
+      );
+    } else if (isLoggedIn) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => HomeView()),
       );
     } else {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const SkipChooseProduct()),
+        MaterialPageRoute(builder: (context) => const GetStartedView()),
       );
     }
   }
@@ -72,4 +74,3 @@ class _SplashViewState extends State<SplashView> {
     );
   }
 }
-

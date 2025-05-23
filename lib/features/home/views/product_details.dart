@@ -22,14 +22,18 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          '${widget.product.name} Details',
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-            color: AppColors.stylish,
+        title: Padding(
+          padding: const EdgeInsets.only(left: 50),
+          child: Text(
+            '${widget.product.name} Details',
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: AppColors.stylish,
+            ),
           ),
         ),
+        
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.pop(context),
